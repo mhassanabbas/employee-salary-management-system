@@ -1,0 +1,68 @@
+﻿@model EmpManagementSystem.Models.Salary
+
+@{
+    ViewData["Title"] = "Edit Salary";
+}
+
+<h2>Edit Salary</h2>
+
+<form method="post" action="/Salary/Edit">
+    <input type="hidden" name="SalaryID" value="@Model.SalaryID" />
+    <div class="mb-3">
+        <label>Employee</label>
+        <select name="EmployeeCode" class="form-control">
+            @foreach (var emp in ViewBag.Employees)
+            {
+                if (emp.EmployeeCode == Model.EmployeeCode)
+                {
+                    <option value="@emp.EmployeeCode" selected>@emp.EmployeeCode - @emp.FullName</option>
+                }
+                else
+                {
+                    <option value="@emp.EmployeeCode">@emp.EmployeeCode - @emp.FullName</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Salary Type</label>
+        <select name="SalaryType" class="form-control">
+            @if (Model.SalaryType == "Monthly")
+            {
+                <option selected>Monthly</option>
+                <option>Daily Wage</option>
+            }
+            else
+            {
+                <option>Monthly</option>
+                <option selected>Daily Wage</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Amount</label>
+        <input type="number" name="Amount" value="@Model.Amount" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Month</label>
+        <select name="Month" class="form-control">
+            @foreach (var m in new List<string> { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" })
+            {
+                if (Model.Month == m)
+                {
+                    <option selected>@m</option>
+                }
+                else
+                {
+                    <option>@m</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Year</label>
+        <input type="number" name="Year" value="@Model.Year" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-warning">Update Salary</button>
+    <a href="/Salary/Index" class="btn btn-secondary">Cancel</a>
+</form>

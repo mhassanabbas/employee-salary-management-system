@@ -1,0 +1,53 @@
+﻿@model EmpManagementSystem.Models.Salary
+
+@{
+    ViewData["Title"] = "Add Salary";
+}
+
+<h2>Add New Salary</h2>
+
+<form method="post" action="/Salary/Create">
+    <div class="mb-3">
+        <label>Employee</label>
+        <select name="EmployeeCode" class="form-control">
+            @foreach (var emp in ViewBag.Employees)
+            {
+                <option value="@emp.EmployeeCode">@emp.EmployeeCode - @emp.FullName</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Salary Type</label>
+        <select name="SalaryType" class="form-control">
+            <option>Monthly</option>
+            <option>Daily Wage</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Amount</label>
+        <input type="number" name="Amount" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Month</label>
+        <select name="Month" class="form-control">
+            <option>January</option>
+            <option>February</option>
+            <option>March</option>
+            <option>April</option>
+            <option>May</option>
+            <option>June</option>
+            <option>July</option>
+            <option>August</option>
+            <option>September</option>
+            <option>October</option>
+            <option>November</option>
+            <option>December</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Year</label>
+        <input type="number" name="Year" value="2026" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-success">Save Salary</button>
+    <a href="/Salary/Index" class="btn btn-secondary">Cancel</a>
+</form>

@@ -1,0 +1,41 @@
+﻿@model List<EmpManagementSystem.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employees";
+}
+
+<h2>Employee List</h2>
+<a href="/Employee/Create" class="btn btn-primary mb-3">Add New Employee</a>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Employee Code</th>
+            <th>Full Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Department</th>
+            <th>Line Manager</th>
+            <th>Joining Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.EmployeeCode</td>
+                <td>@emp.FullName</td>
+                <td>@emp.Gender</td>
+                <td>@emp.Age</td>
+                <td>@emp.Department</td>
+                <td>@emp.LineManager</td>
+                <td>@emp.JoiningDate.ToString("dd-MM-yyyy")</td>
+                <td>
+                    <a href="/Employee/Edit/@emp.EmployeeCode" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/Employee/Delete/@emp.EmployeeCode" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

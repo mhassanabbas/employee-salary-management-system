@@ -1,0 +1,41 @@
+﻿@model List<EmpManagementSystem.Models.Salary>
+
+@{
+    ViewData["Title"] = "Salaries";
+}
+
+<h2>Salary List</h2>
+<a href="/Salary/Create" class="btn btn-primary mb-3">Add New Salary</a>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Salary ID</th>
+            <th>Employee Code</th>
+            <th>Employee Name</th>
+            <th>Salary Type</th>
+            <th>Amount</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sal in Model)
+        {
+            <tr>
+                <td>@sal.SalaryID</td>
+                <td>@sal.EmployeeCode</td>
+                <td>@sal.Employee.FullName</td>
+                <td>@sal.SalaryType</td>
+                <td>@sal.Amount</td>
+                <td>@sal.Month</td>
+                <td>@sal.Year</td>
+                <td>
+                    <a href="/Salary/Edit/@sal.SalaryID" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/Salary/Delete/@sal.SalaryID" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

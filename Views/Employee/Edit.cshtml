@@ -1,0 +1,51 @@
+﻿@model EmpManagementSystem.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<h2>Edit Employee</h2>
+
+<form method="post" action="/Employee/Edit">
+    <div class="mb-3">
+        <label>Employee Code</label>
+        <input type="text" name="EmployeeCode" value="@Model.EmployeeCode" class="form-control" readonly />
+    </div>
+    <div class="mb-3">
+        <label>Full Name</label>
+        <input type="text" name="FullName" value="@Model.FullName" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Gender</label>
+        <select name="Gender" class="form-control">
+            @if (Model.Gender == "Male")
+            {
+                <option selected>Male</option>
+                <option>Female</option>
+            }
+            else
+            {
+                <option>Male</option>
+                <option selected>Female</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Age</label>
+        <input type="number" name="Age" value="@Model.Age" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Department</label>
+        <input type="text" name="Department" value="@Model.Department" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Line Manager</label>
+        <input type="text" name="LineManager" value="@Model.LineManager" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Joining Date</label>
+        <input type="date" name="JoiningDate" value="@Model.JoiningDate.ToString("yyyy-MM-dd")" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-warning">Update Employee</button>
+    <a href="/Employee/Index" class="btn btn-secondary">Cancel</a>
+</form>
