@@ -1,9 +1,18 @@
 using Microsoft.EntityFrameworkCore;
 using EmpManagementSystem.Models;
+using EmpManagementSystem.Services;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+
+// Override the default file-version provider (used for CSS/JS cache-busting)
+// with a no-op version — the default one uses FileSystemWatcher, which hits
+// the same container inotify-instance limit as config reload watching.
+// Must be registered AFTER AddControllersWithViews() so it overrides the
+// default registration.
+builder.Services.AddSingleton<IFileVersionProvider, NoOpFileVersionProvider>();
 
 // Use SQLite for the free-tier live demo (no separate DB server needed),
 // or SQL Server for local development / production — controlled by the
