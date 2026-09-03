@@ -5,7 +5,7 @@
 
 An ASP.NET Core MVC web application for managing employee records and their salary information, built as the capstone project during my Software Development internship at Pakistan Single Window (PSW).
 
-**🔗 Live demo:** *add your Render URL here after deploying — see Setup section*
+**🔗 Live demo:** https://employee-salary-management-system-5pl5.onrender.com
 
 > ⏳ Hosted on a free-tier server that sleeps after 15 minutes of no visitors. If the link takes ~30–60 seconds to load the first time, that's expected — it's just waking up, not broken. It stays fast after that.
 
